@@ -60,7 +60,7 @@ const UserRegistrationForm = () => {
         confirmPassword: "",
       });
       setErrors({});
-      navigate("/seller/posts");
+      navigate("/");
     }
   };
 
