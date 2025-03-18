@@ -63,7 +63,7 @@ const GetAllPosts = () => {
             <h4 className=" text-justify text-gray-700/75 px-[10px] text-[21px]">{post.content}</h4>
             </div>
             <img className="my-[10px] drop-shadow-md" src={`https://be-capstone-5rvf.onrender.com/${post.picture}`} alt={`${post.title}`} />
-            <div><span>${post.initialPrice}</span>  {user=='buyer' ? <span className="border border-red-500"> {post.closed?<span>Post is closed</span>:<span>Post is open for bids</span>}</span>:null}</div>
+            <div><span>${post.initialPrice}</span>  <span className="border rounded-md border-red-500 p-2 m-2"> {post.closed?<span>Post is closed</span>:<span>Post is open for bids</span>}</span></div>
             <div className="flex flex-col items-center">
             <Link className='bg-rose-500 align-center opacity-75 rounded-xl w-[250px] my-[20px] drop-shadow-md hover:cursor-pointer text-center text-[21px] py-[15px] text-white hover:opacity-100 bg-rose-600' to={`/seller/post/${post._id}`}>View Post</Link>
             
