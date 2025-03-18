@@ -60,7 +60,7 @@ const UserRegistrationForm = () => {
         confirmPassword: "",
       });
       setErrors({});
-      navigate("/");
+      navigate("https://subtle-kleicha-aa8606.netlify.app/");
     }
   };
 
