@@ -31,7 +31,7 @@ const GetPostById = () => {
 const handleDelete = async()=>{
   const response = await axios.delete(`https://be-capstone-5rvf.onrender.com/seller/post/postbyid/${id}`,{withCredentials:true,})
   console.log(response.data);
-  navigate(`/${user}/posts`);
+  navigate(`/seller/posts`);
   
 }
 const handleEdit = ()=>{
