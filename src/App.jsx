@@ -136,10 +136,11 @@ function App() {
           path: "post/:id",
           element: <GetPostById />,
         },
-        {
-          path: "profile/:id",
-          element: <Profile />,
-        },]
+        // {
+        //   path: "profile/:id",
+        //   element: <Profile />,
+        // },
+      ]
     }
   ];
   const router = createBrowserRouter(routes, {
