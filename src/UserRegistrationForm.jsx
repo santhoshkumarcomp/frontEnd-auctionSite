@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -24,7 +24,7 @@ const UserRegistrationForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.username) newErrors.username = "Username is required";
+    if (!formData.name) newErrors.name = "name is required";
     if (!formData.email) newErrors.email = "Email is required";
     if (!formData.password) newErrors.password = "Password is required";
     if (formData.password !== formData.confirmPassword)
@@ -41,8 +41,8 @@ const UserRegistrationForm = () => {
       // Handle successful registration here
       console.log("Registration successful:", formData);
       axios
-        .post(`https://be-capstone-5rvf.onrender.com/auth/${user}/register/`, {
-          username: formData.username,
+        .post(`https://be-capstone-5rvf.onrender.com/auth/${user}/register`, {
+          name: formData.name,
           email: formData.email,
           password: formData.password,
         })
@@ -54,7 +54,7 @@ const UserRegistrationForm = () => {
         });
       // You can reset the form if needed
       setFormData({
-        username: "",
+        name: "",
         email: "",
         password: "",
         confirmPassword: "",
@@ -69,18 +69,18 @@ const UserRegistrationForm = () => {
     <h2 class="text-2xl font-semibold text-center mb-6">Register</h2>
     <form onSubmit={handleSubmit}>
       <div class="mb-4">
-        <label htmlFor="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <label htmlFor="name" class="block text-sm font-medium text-gray-700">name</label>
         <input
           type="text"
-          id="username"
-          name="username"
-          value={formData.username}
+          id="name"
+          name="name"
+          value={formData.name}
           onChange={handleChange}
-          placeholder="Enter username"
+          placeholder="Enter name"
           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
         />
-        {errors.username && (
-          <span class="text-red-500 text-sm">{errors.username}</span>
+        {errors.name && (
+          <span class="text-red-500 text-sm">{errors.name}</span>
         )}
       </div>
   
