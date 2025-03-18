@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "./App";
+import { useNavigate } from "react-router";
 
 const UserRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +10,9 @@ const UserRegistrationForm = () => {
     password: "",
     confirmPassword: "",
   });
-
+ const {user} = useContext(AuthContext);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,7 +41,7 @@ const UserRegistrationForm = () => {
       // Handle successful registration here
       console.log("Registration successful:", formData);
       axios
-        .post("https://be-capstone-5rvf.onrender.com/auth/register/", {
+        .post(`https://be-capstone-5rvf.onrender.com/auth/${user}/register/`, {
           username: formData.username,
           email: formData.email,
           password: formData.password,
@@ -57,74 +60,87 @@ const UserRegistrationForm = () => {
         confirmPassword: "",
       });
       setErrors({});
+      navigate("/seller/posts");
     }
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder="Enter username"
-          />
-          {errors.username && (
-            <span style={{ color: "red" }}>{errors.username}</span>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter email"
-          />
-          {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
-        </div>
-
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Enter password"
-          />
-          {errors.password && (
-            <span style={{ color: "red" }}>{errors.password}</span>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="Confirm password"
-          />
-          {errors.confirmPassword && (
-            <span style={{ color: "red" }}>{errors.confirmPassword}</span>
-          )}
-        </div>
-
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <div class="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-semibold text-center mb-6">Register</h2>
+    <form onSubmit={handleSubmit}>
+      <div class="mb-4">
+        <label htmlFor="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          placeholder="Enter username"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        {errors.username && (
+          <span class="text-red-500 text-sm">{errors.username}</span>
+        )}
+      </div>
+  
+      <div class="mb-4">
+        <label htmlFor="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Enter email"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        {errors.email && (
+          <span class="text-red-500 text-sm">{errors.email}</span>
+        )}
+      </div>
+  
+      <div class="mb-4">
+        <label htmlFor="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="Enter password"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        {errors.password && (
+          <span class="text-red-500 text-sm">{errors.password}</span>
+        )}
+      </div>
+  
+      <div class="mb-4">
+        <label htmlFor="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          placeholder="Confirm password"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+        />
+        {errors.confirmPassword && (
+          <span class="text-red-500 text-sm">{errors.confirmPassword}</span>
+        )}
+      </div>
+  
+      <button
+        type="submit"
+        class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+  
   );
 };
 
