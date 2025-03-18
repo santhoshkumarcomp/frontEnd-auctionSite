@@ -7,7 +7,7 @@ import Me from "./Me";
 import UpdatePassword from "./UpdatePassword";
 
 import GetAllPosts from "./GetAllPosts";
-import Profile from "./Profile";
+// import Profile from "./Profile";
 import GetPostById from "./GetPostById";
 import DashBoardLayout from "./DashBoardLayout";
 import CreatePost from "./CreatePost";
@@ -16,6 +16,7 @@ import Welcome from "./Welcome";
 import axios from "axios";
 import EditPost from "./EditPost";
 import CategoryPosts from "./CategoryPosts";
+import Refresh from "./Refresh";
 
 export const AuthContext = createContext({ user: 'buyer', login: () => {},logged: false, logSetter: () => {} });
 
@@ -100,8 +101,8 @@ function App() {
           element: <CategoryPosts />,
         },
         {
-          path: "profile/:id",
-          element: <Profile />,
+          path: "refresh",
+          element: <Refresh />,
         },]
     },{
       path: "/buyer",

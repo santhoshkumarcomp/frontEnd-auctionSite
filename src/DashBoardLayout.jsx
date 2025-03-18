@@ -4,11 +4,19 @@ import importImg from './5911.jpg';
 import Me from "./Me";
 import { useContext } from "react";
 import { AuthContext } from "./App";
+import axios from "axios";
 
 
 
 const DashBoardLayout = () => {
   const {user,logged} = useContext(AuthContext);
+  const handleRefresh = async(e) => {
+    e.preventDefault;
+    const response = await axios.get('https://be-capstone-5rvf.onrender.com/seller/post/closedposts', { withCredentials: true });
+    console.log(response.data);
+    alert("Refreshed");
+
+  }
 
 
   return (<div className="flex">
@@ -18,9 +26,9 @@ const DashBoardLayout = () => {
       {user==="seller" ?(
       <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-square-plus"></i><span className="relative left-1/5 text-gray-500"><Link to={"/seller/createpost"}>Create Post</Link></span></div>):
       <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-square-plus"></i><span className="relative left-1/5 text-gray-500"><Link to={"/seller/createpost"}>History</Link></span></div>}
-      <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-dharmachakra"></i><span className="relative left-1/5 text-gray-500"><Link to={`/${user}/postcat/traditional`}>Traditional</Link></span></div>
-      <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-rotate-left"></i><span className="relative left-1/5 text-gray-500">Reverse</span></div>
-      <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-envelope-circle-check"></i><span className="relative left-1/5 text-gray-500">Sealed</span></div>    
+      <div  onClick={handleRefresh} className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-dharmachakra"></i><span className="relative left-1/5 text-gray-500">Refresh</span></div>
+      {/* <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-rotate-left"></i><span className="relative left-1/5 text-gray-500">Reverse</span></div>
+      <div className=" border rounded-sm border-dashed border-orange-500 p-[10px] m-[10px] flex align-center items-center hover:cursor-pointer hover:bg-yellow-100"><i className="fa-solid fa-envelope-circle-check"></i><span className="relative left-1/5 text-gray-500">Sealed</span></div>     */}
       
       </div>}
     <div className={`flex-[0.6] min-h-screen flex items-center justify-center ${!logged? '!flex-[1]':'!flex-[0.6]'}`}><Outlet /></div>
