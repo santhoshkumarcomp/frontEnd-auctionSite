@@ -16,7 +16,7 @@ import Welcome from "./Welcome";
 import axios from "axios";
 import EditPost from "./EditPost";
 import CategoryPosts from "./CategoryPosts";
-import Refresh from "./Refresh";
+// import Refresh from "./Refresh";
 
 export const AuthContext = createContext({ user: 'buyer', login: () => {},logged: false, logSetter: () => {} });
 
@@ -100,10 +100,11 @@ function App() {
           path: "postcat/:category",
           element: <CategoryPosts />,
         },
-        {
-          path: "refresh",
-          element: <Refresh />,
-        },]
+        // {
+        //   path: "refresh",
+        //   element: <Refresh />,
+        // },
+        ]
     },{
       path: "/buyer",
       element: (
