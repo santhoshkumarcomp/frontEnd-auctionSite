@@ -34,7 +34,7 @@ This will start the development server and you can view the application in your 
 
 - User authentication and authorization
 - Browse for items
-- Place bids on items
+- Place bids on items(auctions last for half hour only and triggered to close by seller)
 - List items for auction
 - View auction history and bid status
 - Seller can refresh to close items auction and send notification to respecrtive buyer and sellers
