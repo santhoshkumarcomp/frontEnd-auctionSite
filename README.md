@@ -37,6 +37,7 @@ This will start the development server and you can view the application in your 
 - Place bids on items
 - List items for auction
 - View auction history and bid status
+- Seller can refresh to close items auction and send notification to respecrtive buyer and sellers
 
 ## Contributing
 
