@@ -46,25 +46,27 @@ const LoginForm = () => {
           });
           notify();
         }
-        if (user == 'seller'){
-          const notify = () =>toast.success("Login successful", {
-            onClose: () => { logSetter(true);
-              navigate("/seller/posts")
-              
-            }
-          });
-          notify();
-
-        }
-        else if(user=='buyer'){
-          const notify = () =>toast.success("Login successful", {
-            onClose: () => { logSetter(true);
-              navigate("/buyer/posts")
-              // window.location.reload()
-              
-            }
-          });
-          notify();
+        else {
+          if (user == 'seller'){
+            const notify = () =>toast.success("Login successful", {
+              onClose: () => { logSetter(true);
+                navigate("/seller/posts")
+                
+              }
+            });
+            notify();
+  
+          }
+          else if(user=='buyer'){
+            const notify = () =>toast.success("Login successful", {
+              onClose: () => { logSetter(true);
+                navigate("/buyer/posts")
+                // window.location.reload()
+                
+              }
+            });
+            notify();
+          }
         }
         
           
