@@ -39,6 +39,13 @@ const LoginForm = () => {
         })
 
         console.log(response)
+        if(response.data == "User not found"){
+          const notify = () =>toast.error("User not found", {
+            onClose: () => { logSetter(false);
+            }
+          });
+          notify();
+        }
         if (user == 'seller'){
           const notify = () =>toast.success("Login successful", {
             onClose: () => { logSetter(true);
