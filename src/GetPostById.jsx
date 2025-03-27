@@ -52,7 +52,7 @@ const handleBid =async(options)=>{
   const bidPrice = Number(priceRef.current);
   if(options == "sealed"){
     const response = await axios.post(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
-    console.log(response.data); 
+    alert(response.data); 
     priceRef.current = "0";
   setPrice(!price);
     return;
@@ -60,13 +60,14 @@ const handleBid =async(options)=>{
 if(options == "reverse"){
     const response = await axios.patch(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
     console.log(response.data); 
-    
+    alert(response.data); 
     priceRef.current = "0";
   setPrice(!price);
     return;
   }
   const response = await axios.put(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"price" : bidPrice},{withCredentials : true})
   console.log(response.data); 
+  alert(response.data); 
   priceRef.current = "0";
   setPrice(!price);
   
