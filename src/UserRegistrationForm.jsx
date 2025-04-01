@@ -40,19 +40,14 @@ const UserRegistrationForm = () => {
     } else {
       // Handle successful registration here
       // console.log("Registration successful:", formData);
-      axios
+     const response = axios
         .post(`https://be-capstone-5rvf.onrender.com/auth/${user}/register`, {
           name: formData.name,
           email: formData.email,
           password: formData.password,
         })
-        .then(function (response) {
-          console.log(response);
-          alert(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        
+        alert(response.data);
       // You can reset the form if needed
       setFormData({
         name: "",
