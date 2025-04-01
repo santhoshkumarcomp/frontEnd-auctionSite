@@ -39,7 +39,7 @@ const UserRegistrationForm = () => {
       setErrors(validationErrors);
     } else {
       // Handle successful registration here
-      console.log("Registration successful:", formData);
+      // console.log("Registration successful:", formData);
       axios
         .post(`https://be-capstone-5rvf.onrender.com/auth/${user}/register`, {
           name: formData.name,
@@ -47,7 +47,7 @@ const UserRegistrationForm = () => {
           password: formData.password,
         })
         .then(function (response) {
-          console.log(response);
+          alert(response);
         })
         .catch(function (error) {
           console.log(error);
@@ -60,6 +60,7 @@ const UserRegistrationForm = () => {
         confirmPassword: "",
       });
       setErrors({});
+  
       navigate("/");
     }
   };
