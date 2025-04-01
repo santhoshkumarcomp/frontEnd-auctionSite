@@ -32,7 +32,7 @@ const UserRegistrationForm = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
@@ -40,13 +40,13 @@ const UserRegistrationForm = () => {
     } else {
       // Handle successful registration here
       // console.log("Registration successful:", formData);
-     const response = axios
+     const response = await axios
         .post(`https://be-capstone-5rvf.onrender.com/auth/${user}/register`, {
           name: formData.name,
           email: formData.email,
           password: formData.password,
         })
-        
+        console.log(response)
         alert(response.data);
       // You can reset the form if needed
       setFormData({
