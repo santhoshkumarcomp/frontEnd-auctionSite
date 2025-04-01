@@ -47,6 +47,7 @@ const UserRegistrationForm = () => {
           password: formData.password,
         })
         .then(function (response) {
+          console.log(response);
           alert(response.data);
         })
         .catch(function (error) {
