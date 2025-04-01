@@ -45,9 +45,9 @@ const UserRegistrationForm = () => {
           name: formData.name,
           email: formData.email,
           password: formData.password,
-        })
+        });
         console.log(response)
-        alert(response.data);
+        alert(response);
       // You can reset the form if needed
       setFormData({
         name: "",
