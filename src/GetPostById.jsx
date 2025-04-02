@@ -15,6 +15,7 @@ const GetPostById = () => {
   const [price, setPrice] = useState(false);
   const navigate = useNavigate();
   const priceRef = useRef(null);
+  const [error, setError] = useState('');
   
   useEffect(()=>{
     // if(user === 'buyer') {priceRef.current.focus()} ;
@@ -46,6 +47,12 @@ const handleEdit = ()=>{
 }
 const handleChange = (e) => {
   const { value } = e.target;
+  if (value === '' || value <= 0) {
+    setError('Please enter a valid positive number');
+    return;
+  }
+  alert(error);
+  setError('');
   priceRef.current = value;
 };
 const handleBid =async(options)=>{
