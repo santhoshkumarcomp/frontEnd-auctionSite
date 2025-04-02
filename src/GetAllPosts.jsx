@@ -25,7 +25,7 @@ const GetAllPosts = () => {
       console.log(`Logged value :${logged}`);
       setLoading(true);
       const response = await axios.get(`https://be-capstone-5rvf.onrender.com/${user}/post/getposts`, { withCredentials: true });
-      console.log(response.data);
+      
       setFeedPosts(response.data);
       setLoading(false);
     };

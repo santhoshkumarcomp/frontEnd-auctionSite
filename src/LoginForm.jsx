@@ -38,7 +38,7 @@ const LoginForm = () => {
           withCredentials: true,
         })
 
-        console.log(response)
+        // console.log(response)
         if(response.data == "User not found"){
           const notify = () =>toast.error("User not found", {
             onClose: () => { logSetter(false);

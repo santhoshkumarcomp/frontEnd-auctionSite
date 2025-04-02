@@ -26,7 +26,7 @@ const Me = () => {
       toast.error("Failed to fetch user data");
       console.error("Error fetching user data:", error);
     } finally {
-      console.log(userData)
+      
       setLoading(false);
     }
   };

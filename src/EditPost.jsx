@@ -8,7 +8,7 @@ const EditPost = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const post = location.state;
-  console.log("post is"+post )
+  
   const [fileUploaded, setFileUploaded] = useState(false);
       const [formData, setFormData] = useState(post);
   
@@ -23,7 +23,7 @@ const EditPost = () => {
       const handleSubmit = async(e) => {
         e.preventDefault();
         // Handle form submission logic here
-        console.log(formData);
+        
         const data = new FormData();
         for (const key in formData) {
           data.append(key, formData[key]);
