@@ -49,9 +49,10 @@ const handleChange = (e) => {
   const { value } = e.target;
   if (value === '' || value <= 0) {
     setError('Please enter a valid positive number');
+    alert(error);
     return;
   }
-  alert(error);
+  
   setError('');
   priceRef.current = value;
 };
