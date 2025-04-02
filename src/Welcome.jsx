@@ -6,9 +6,8 @@ import { useContext } from "react";
 const Welcome = () => {
   const navigate = useNavigate();
    
-   const { user, login,logged } = useContext(AuthContext);
-   console.log(user);
-   console.log(`logged value :${logged}`);
+   const {  login } = useContext(AuthContext);
+  
   return (
    <div>
     <div className="flex flex-col items-center  hover:cursor-pointer hover:bg-opacity-50"><h1 className=" align-center text-[64px]   julius-sans-one-regular font-extrabold">AUCTION's</h1></div>
