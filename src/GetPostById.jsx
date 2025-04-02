@@ -72,13 +72,11 @@ if(options == "reverse"){
   alert(response.data); 
   priceRef.current = "0";
   setPrice(!price);
+  setLoading(false);
   } catch (error) {
         
         console.error("Error fetching user data:", error);
-      } finally {
-        
-        setLoading(false);
-      }
+  } 
   
   
 }
