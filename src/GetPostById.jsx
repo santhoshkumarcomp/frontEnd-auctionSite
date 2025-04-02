@@ -13,7 +13,6 @@ const GetPostById = () => {
   const [bidHistory, setBidHistory] = useState([]);
   const {id} = useParams();
   const [price, setPrice] = useState(false);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const priceRef = useRef(null);
   
@@ -51,7 +50,6 @@ const handleChange = (e) => {
 };
 const handleBid =async(options)=>{
   const bidPrice = Number(priceRef.current);
-  try{
   if(options == "sealed"){
     const response = await axios.post(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
     alert(response.data); 
@@ -72,16 +70,8 @@ if(options == "reverse"){
   alert(response.data); 
   priceRef.current = "0";
   setPrice(!price);
-  setLoading(false);
-  } catch (error) {
-        
-        console.error("Error fetching user data:", error);
-  } 
   
   
-}
-if (loading) {
-  return <div>Loading...</div>;
   
 }
 
