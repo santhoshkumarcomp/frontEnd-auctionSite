@@ -111,7 +111,7 @@ if (loading) {
         {post.closed ?null:<button className=' bg-rose-500 opacity-75 rounded-xl w-[250px] my-[20px] drop-shadow-md hover:cursor-pointer text-blue py-[15px] hover:opacity-100 bg-rose-600' onClick={()=>handleBid(post.options)}><h2>Bid Post</h2></button> }
       
       </div>) }
-         { !loading && <BidHistory bidHistory={bidHistory} options={post.options} />}
+         { !loading ? <BidHistory bidHistory={bidHistory} options={post.options} />:<div>Loading...</div>}
           
         </div>
      
