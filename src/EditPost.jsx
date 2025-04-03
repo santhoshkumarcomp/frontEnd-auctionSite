@@ -35,10 +35,10 @@ const EditPost = () => {
           toast.error("Please enter a valid price");
           return;
         }
-        if (!formData.options) {
-          toast.error("Please select an option");
-          return;
-        }
+        // if (!formData.options) {
+        //   toast.error("Please select an option");
+        //   return;
+        // }
 
         if (!formData.picture) {
           toast.error("Please upload an image");
