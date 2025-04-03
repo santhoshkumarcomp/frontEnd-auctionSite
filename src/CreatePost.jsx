@@ -26,6 +26,10 @@ const CreatePost = () => {
     const handleSubmit = async(e) => {
       e.preventDefault();
       // Handle form submission logic here
+      if (!formData.title || !formData.content || !formData.initialPrice || !formData.options || !formData.picture) {
+        toast.error("Please fill all fields including image");
+        return;
+      }
       console.log(formData);
       const data = new FormData();
       for (const key in formData) {
