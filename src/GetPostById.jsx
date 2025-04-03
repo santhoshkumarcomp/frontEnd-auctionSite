@@ -37,7 +37,9 @@ const handleDelete = async()=>{
   console.log(response.data);
   const notify = () => toast.success("Post deleted");
   notify();
-  navigate(`/seller/posts`);
+  setTimeout(() => {
+    navigate(`/seller/posts`);
+  }, 2000);
   
 }
 const handleEdit = ()=>{
