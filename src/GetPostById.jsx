@@ -26,6 +26,7 @@ const GetPostById = () => {
       setPost(response.data.post);
       
       setBidHistory(response.data.priceHistory);
+      setLoading(false);
     }
     fetchPostById();
 
@@ -64,7 +65,7 @@ const handleBid =async(options)=>{
     alert(response.data); 
     priceRef.current = "0";
   setPrice(!price);
-  setLoading(false);
+  
     return;
   }
 if(options == "reverse"){
@@ -73,7 +74,7 @@ if(options == "reverse"){
     alert(response.data); 
     priceRef.current = "0";
   setPrice(!price);
-  setLoading(false);
+  
     return;
   }
   const response = await axios.put(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"price" : bidPrice},{withCredentials : true})
@@ -81,7 +82,7 @@ if(options == "reverse"){
   alert(response.data); 
   priceRef.current = "0";
   setPrice(!price);
-  setLoading(false);
+  
   
   
   
