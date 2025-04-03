@@ -23,8 +23,25 @@ const EditPost = () => {
       const handleSubmit = async(e) => {
         e.preventDefault();
         // Handle form submission logic here
-        if (!formData.title || !formData.content || !formData.initialPrice || !formData.options || !formData.picture) {
-          toast.error("Please fill all fields including image");
+        if (!formData.title.trim()) {
+          toast.error("Title is required");
+          return;
+        }
+        if (!formData.content.trim()) {
+          toast.error("Content is required");
+          return;
+        }
+        if (!formData.initialPrice || formData.initialPrice <= 0) {
+          toast.error("Please enter a valid price");
+          return;
+        }
+        if (!formData.options) {
+          toast.error("Please select an option");
+          return;
+        }
+
+        if (!formData.picture) {
+          toast.error("Please upload an image");
           return;
         }
         const data = new FormData();
