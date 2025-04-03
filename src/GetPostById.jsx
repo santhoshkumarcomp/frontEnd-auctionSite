@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { AuthContext } from "./App";
+import { ToastContainer, toast } from 'react-toastify';
 
 import BidHistory from "./BidHistory";
 
@@ -34,6 +35,8 @@ const GetPostById = () => {
 const handleDelete = async()=>{
   const response = await axios.delete(`https://be-capstone-5rvf.onrender.com/seller/post/postbyid/${id}`,{withCredentials:true,})
   console.log(response.data);
+  const notify = () => toast.success("Post deleted");
+  notify()
   navigate(`/seller/posts`);
   
 }
@@ -93,6 +96,7 @@ if (loading) {
 
   return (
     <div className=" bg-white flex rounded-2xl  flex-col justify-center p-[15px] items-center min-h-screen mt-[30px] mx-[15px] ">
+     <ToastContainer />
       <div className="flex flex-col items-center w-[720px]  p-6 text-[42px] rounded-lg shadow-md"> DETAILED VIEW</div>
         <div key={post._id}></div>
           <h2 className="text-2xl font-bold mb-4">{post.title}</h2>
