@@ -30,7 +30,7 @@ const CreatePost = () => {
         toast.error("Please fill all fields including image");
         return;
       }
-      console.log(formData);
+      // console.log(formData);
       const data = new FormData();
       for (const key in formData) {
         data.append(key, formData[key]);
