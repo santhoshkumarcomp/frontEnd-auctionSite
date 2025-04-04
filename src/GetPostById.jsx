@@ -54,15 +54,24 @@ const handleEdit = ()=>{
 }
 const handleChange = (e) => {
   const { value } = e.target;
-  priceRef.current = value;
   
-  clearTimeout(priceRef.current.timeout);
+  // Clear any existing timeout
+  if (priceRef.current.timeout) {
+    clearTimeout(priceRef.current.timeout);
+  }
+  
+
+  
+  
+
   priceRef.current.timeout = setTimeout(() => {
-    if (value === '' || value <= 0) {
+    if (value === '' || Number(value) <= 0) {
       alert('Please enter a valid positive number');
     }
-  }, 2000);
-};
+  }, 500);
+
+  priceRef.current.value = value;
+}
 const handleBid =async(options)=>{
   const bidPrice = Number(priceRef.current);
   if(options == "sealed"){
