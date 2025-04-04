@@ -61,7 +61,7 @@ const handleChange = (e) => {
   }
   
 
-  
+  priceRef.current.value = value;
   
 
   priceRef.current.timeout = setTimeout(() => {
@@ -70,7 +70,7 @@ const handleChange = (e) => {
     }
   }, 500);
 
-  priceRef.current.value = value;
+  
 }
 const handleBid =async(options)=>{
   const bidPrice = Number(priceRef.current);
