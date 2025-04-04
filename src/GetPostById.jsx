@@ -78,7 +78,7 @@ const handleBid =async(options)=>{
   toast.success("Bidding...")
   if(options == "sealed"){
     const response = await axios.post(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
-    if(response.data == "bid is top price"){
+    if(response.data == "sealed bid post"){
       toast.success(response.data);
     }
     else{
