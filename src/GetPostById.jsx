@@ -55,8 +55,9 @@ const handleEdit = ()=>{
 const handleChange = (e) => {
   const { value } = e.target;
   if (value === '' || value <= 0) {
-    setError('Please enter a valid positive number');
+    
     setTimeout(()=>{
+      setError('Please enter a valid positive number');
       alert(error);
     },2000);
     return;
