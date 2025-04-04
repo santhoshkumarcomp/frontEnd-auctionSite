@@ -54,20 +54,14 @@ const handleEdit = ()=>{
 }
 const handleChange = (e) => {
   const { value } = e.target;
-  
-    
-    setTimeout(()=>{
-      // setError();
-      if (value === '' || value <= 0) {
-      alert('Please enter a valid positive number');
-      return;
-      }
-    },2000);
-    
-  
-  
-  
   priceRef.current = value;
+  
+  clearTimeout(priceRef.current.timeout);
+  priceRef.current.timeout = setTimeout(() => {
+    if (value === '' || value <= 0) {
+      alert('Please enter a valid positive number');
+    }
+  }, 2000);
 };
 const handleBid =async(options)=>{
   const bidPrice = Number(priceRef.current);
