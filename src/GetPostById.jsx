@@ -62,6 +62,7 @@ const handleChange = (e) => {
   
 
   priceRef.current.value = value;
+  console.log()
   
 
   priceRef.current.timeout = setTimeout(() => {
@@ -73,7 +74,7 @@ const handleChange = (e) => {
   
 }
 const handleBid =async(options)=>{
-  const bidPrice = Number(priceRef.current);
+  const bidPrice = Number(priceRef.current.value);
   if(options == "sealed"){
     const response = await axios.post(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
     alert(response.data); 
