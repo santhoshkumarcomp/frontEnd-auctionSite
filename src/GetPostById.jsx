@@ -78,7 +78,13 @@ const handleBid =async(options)=>{
   toast.success("Bidding...")
   if(options == "sealed"){
     const response = await axios.post(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
-    alert(response.data); 
+    if(response.data == "bid is top price"){
+      toast.success(response.data);
+    }
+    else{
+      toast.error(response.data);
+    }
+    
     priceRef.current = "0";
   setPrice(!price);
   
@@ -87,7 +93,12 @@ const handleBid =async(options)=>{
 if(options == "reverse"){
     const response = await axios.patch(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
     
-    alert(response.data); 
+    if(response.data == "bid is top price"){
+      toast.success(response.data);
+    }
+    else{
+      toast.error(response.data);
+    } 
     priceRef.current = "0";
   setPrice(!price);
   
@@ -95,7 +106,12 @@ if(options == "reverse"){
   }
   const response = await axios.put(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"price" : bidPrice},{withCredentials : true})
    
-  alert(response.data); 
+  if(response.data == "bid is top price"){
+    toast.success(response.data);
+  }
+  else{
+    toast.error(response.data);
+  }
   priceRef.current = "0";
   setPrice(!price);
   
