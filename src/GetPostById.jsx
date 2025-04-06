@@ -53,25 +53,17 @@ const handleEdit = ()=>{
   });
 }
 const handleChange = (e) => {
-  const { value } = e.target;
-  
-  // Clear any existing timeout
-  if (priceRef.current.timeout) {
-    clearTimeout(priceRef.current.timeout);
+  const value = e.target.value;
+  const numValue = Number(value);
+
+  // Store the value directly
+  priceRef.current = numValue;
+
+  // Immediate validation for better user experience
+  if (!value || numValue <= 0) {
+    toast.error('Please enter a valid positive number');
+    return;
   }
-  
-
-  priceRef.current = value;
-  console.log()
-  
-
-  priceRef.current.timeout = setTimeout(() => {
-    if (value === '' || Number(value) <= 0) {
-      alert('Please enter a valid positive number');
-    }
-  }, 500);
-
-  
 }
 const handleBid =async(options)=>{
   const bidPrice = Number(priceRef.current);
