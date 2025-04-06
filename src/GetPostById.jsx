@@ -54,19 +54,21 @@ const handleEdit = ()=>{
 }
 const handleChange = (e) => {
   const value = e.target.value;
-  const numValue = Number(value);
+  
 
   // Store the value directly
-  priceRef.current = numValue;
+  priceRef.current = value;
 
   // Immediate validation for better user experience
-  if (!value || numValue <= 0) {
+  
+}
+const handleBid =async(options)=>{
+  const value = priceRef.current;
+  const bidPrice = Number(priceRef.current);
+  if ( !value ||bidPrice <= 0) {
     toast.error('Please enter a valid positive number');
     return;
   }
-}
-const handleBid =async(options)=>{
-  const bidPrice = Number(priceRef.current);
   toast.success("Bidding...")
   if(options == "sealed"){
     const response = await axios.post(`https://be-capstone-5rvf.onrender.com/buyer/post/buyerbid/${id}`,{"options":options,"price" : bidPrice},{withCredentials : true})
